@@ -15,7 +15,7 @@ Hello!
 
 This is my first post.
 
-So, let's gest started with some tests.
+So, let's get started with some tests.
 
 ## Testing some functions
 
