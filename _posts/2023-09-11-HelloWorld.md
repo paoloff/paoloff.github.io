@@ -7,9 +7,17 @@ math: true
 
 
 
-# Welcome
+#Welcome
 
-My first post - let's gest started with some tests.
+## Introduction
+
+Hello! 
+
+This is my first post.
+
+So, let's gest started with some tests.
+
+## Testing some functions
 
 * Some math:
 
