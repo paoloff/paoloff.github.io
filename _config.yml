@@ -93,9 +93,9 @@ comments:
   # Giscus options › https://giscus.app
   giscus:
     repo: 'paoloff/paoloff.github.io' # <gh-username>/<repo>
-    repo_id: '690677149'
-    category: 'Comments'
-    category_id:
+    repo_id: 'R_kgDOKSrlnQ'
+    category: 'Announcements'
+    category_id: 'DIC_kwDOKSrlnc4CZSEP'
     mapping: # optional, default to 'pathname'
     input_position: # optional, default to 'bottom'
     lang: # optional, default to the value of `site.lang`
