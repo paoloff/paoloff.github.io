@@ -92,9 +92,9 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: # <gh-username>/<repo>
-    repo_id:
-    category:
+    repo: "paoloff/paoloff.github.io" # <gh-username>/<repo>
+    repo_id: "690677149"
+    category: "Announcements"
     category_id:
     mapping: # optional, default to 'pathname'
     input_position: # optional, default to 'bottom'
