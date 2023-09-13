@@ -82,7 +82,7 @@ avatar:
 toc: true
 
 comments:
-  active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active: 'giscus' # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
@@ -92,9 +92,9 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: "paoloff/paoloff.github.io" # <gh-username>/<repo>
-    repo_id: "690677149"
-    category: "Announcements"
+    repo: 'paoloff/paoloff.github.io' # <gh-username>/<repo>
+    repo_id: '690677149'
+    category: 'Comments'
     category_id:
     mapping: # optional, default to 'pathname'
     input_position: # optional, default to 'bottom'
