@@ -137,8 +137,8 @@ defaults:
       path: "" # An empty string here means all files in the project
       type: posts
     values:
-      applause_button: true
       layout: post
+      applause_button: true
       comments: true # Enable comments in posts.
       toc: true # Display TOC column in posts.
       # DO NOT modify the following parameter unless you are confident enough
