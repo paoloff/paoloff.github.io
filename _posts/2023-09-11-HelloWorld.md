@@ -30,10 +30,13 @@ So, let's get started with some tests.
 $$ \Delta L = L_0 \alpha \Delta T$$
 
 
+
+
 $$ \frac{\pi^2}{6} = \sum _{n=1} ^{\infty} \frac{1}{n^2} $$
 
 
 * Now, some code:
+  
 ```python
 import numpy as np
 x = 4 + np.pi
@@ -41,6 +44,7 @@ print("This is a piece of code in Python")
 ```
 
 * Finally, a random image:
+  
 ![A mountain](/assets/mountain.jpg)
 
 
