@@ -1,0 +1,40 @@
+## Approximating arbitrary functions with shallow neural nets
+
+It is a well known fact that neural networks can approximate arbitrarily well any continuous function $f: \mathbb{R^m} \rightarrow \mathbb{R^n} $ inside a bounded domain. [This property](https://link.springer.com/article/10.1007/BF02551274) was proven by G. Cybenko in the late 1980s , showing that even a very shallow architecture consisting of a network with a single hidden layer can do the job.
+
+To get the main idea behind the proof, let's first focus on 1D mappings, i.e., $y = f(x)$ with $x, y \in \mathbb{R}$. To simplify things further, let's restrict $x$ to the unit interval, $x \in [0,1]$. It is very easy to generalize this restrictions to more complex cases once you understand the overall strategy.
+
+We will focus on using a ReLU nonlinearity, although other nonlinear activation functions such as $\tanh$ or sigmoid works just as well with minimal modifications. Our shallow network would look like
+
+<p align="center">
+<img src="/assets/shallownet3.png" width=400>
+</p>
+
+The basic idea in constructing an approximation to $f$ is to partition the unit interval into $n$ arbitrarily small intervals $I_j = [\frac{j}{n},\frac{j+1}{n}]$ with $j=0,...,n-1$ while also "partitioning" the neurons of the hidden layer into $n$ sets $H_j$ again for $j=0,...,n-1$. Now, each set of hidden neurons $H_j$ is used to approximate $f$ only near the $j$-th interval, i.e., inside $I_{j-1}$, $I_j$ and $I_{j+1}$; otherwise it should output $0$. Finally, since the outputs of all hidden neurons are summed together to produce $y$, the network approximation of $f$ should work for any $x$ on the whole unit interval.
+
+But how do we approximate $f$ on each interval $I_j$? Luckily, that requires only 3 hidden neurons when using the ReLU activation function. The idea is that each of the 3 neurons belonging to $H_j$ output a ReLU activation that, when summed together, produce a sharp spike at the center of $I_j$ with height equal to 1. We then scale this spike to match the function we want to approximate, i.e., multiply by $f(\frac{j+1/2}{n})$. Finally, we superimpose all spikes together, effectively producing a linear interpolation of $f$ that matches the function exactly at the points 
+$\frac{j+1/2}{n}$ for $j=0,...,n-1$.
+
+For each set of three neurons $H_j$, their individual activations are:
+
+$$a_j^-(x) = ReLU\left(x-\frac{j-1/2}{n}\right)$$
+
+$$a_j^0(x) = ReLU\left(x-\frac{j+1/2}{n}\right)$$
+
+$$a_j^+(x) = ReLU\left(x-\frac{j+3/2}{n}\right)$$
+
+The terms inside parentheses can be obtained by applying biases in the connections between the input layer and the hidden layer. In the connection to the output layer, these three activations are scaled and summed as
+
+$$F_j(x) = f\left(\frac{j+1/2}{n}\right)[a^-_j(x) -2 a_j(x) -a^+_j(x)]$$
+
+It can be easily seen that the functions $F_j(x)$ consists of a symmetric triangular peak centered at $x=\frac{j+1/2}{n}$, with a base consisting of the set $x \in [\frac{j-1/2}{n},\frac{j+3/2}{n}] $ and height $f(\frac{j+1/2}{n})$. 
+
+The  activation of the neuron in the output layer can then be written as 
+
+$$F(x) = \sum_{j=1}^n F_j(x)$$
+
+Now, to see why $F$ is a linear interpolation of $f$, notice that for $x=\frac{j+1/2}{n}$, $F(x)$ matches exactly with $f(x)$ since the only contributing peak with a nonzero contribution is the term $F_j(x)$. For any $x$ between two consecutive peak centers, e.g., $x \in [\frac{j+1/2}{n},\frac{j+3/2}{n}]$, the only non-zero contributions are $F_j(x)$ and $F_{j+1}(x)$. But since both $F_j$ and $F_{j+1}$ are linear and monotone in this interval, their sum must be a line connecting the peak centers.
+
+
+
+
