@@ -1,5 +1,13 @@
-## Approximating arbitrary functions with shallow neural nets
+---
+title: Approximating arbitrary functions with shallow neural nets
+date: 2023-09-14 03:00:00 -500
+categories: [general]
+math: true
+---
 
+
+
+## Introduction
 It is a well known fact that neural networks can approximate arbitrarily well any continuous function $f: \mathbb{R^m} \rightarrow \mathbb{R^n} $ inside a bounded domain. [This property](https://link.springer.com/article/10.1007/BF02551274) was proven by G. Cybenko in the late 1980s , showing that even a very shallow architecture consisting of a network with a single hidden layer can do the job.
 
 To get the main idea behind the proof, let's first focus on 1D mappings, i.e., $y = f(x)$ with $x, y \in \mathbb{R}$. To simplify things further, let's restrict $x$ to the unit interval, $x \in [0,1]$. It is very easy to generalize this restrictions to more complex cases once you understand the overall strategy.
