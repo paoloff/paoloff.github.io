@@ -14,10 +14,6 @@ To get the main idea behind the proof, let's first focus on 1D mappings, i.e., $
 
 We will focus on using a ReLU nonlinearity, although other nonlinear activation functions such as $\tanh$ or sigmoid works just as well with minimal modifications. Our shallow network would look like
 
-<p align="center">
-<img src="/assets/shallownet3.png" width=400>
-</p>
-
 The basic idea in constructing an approximation to $f$ is to partition the unit interval into $n$ arbitrarily small intervals $I_j = [\frac{j}{n},\frac{j+1}{n}]$ with $j=0,...,n-1$ while also "partitioning" the neurons of the hidden layer into $n$ sets $H_j$ again for $j=0,...,n-1$. Now, each set of hidden neurons $H_j$ is used to approximate $f$ only near the $j$-th interval, i.e., inside $I_{j-1}$, $I_j$ and $I_{j+1}$; otherwise it should output $0$. Finally, since the outputs of all hidden neurons are summed together to produce $y$, the network approximation of $f$ should work for any $x$ on the whole unit interval.
 
 But how do we approximate $f$ on each interval $I_j$? Luckily, that requires only 3 hidden neurons when using the ReLU activation function. The idea is that each of the 3 neurons belonging to $H_j$ output a ReLU activation that, when summed together, produce a sharp spike at the center of $I_j$ with height equal to 1. We then scale this spike to match the function we want to approximate, i.e., multiply by $f(\frac{j+1/2}{n})$. Finally, we superimpose all spikes together, effectively producing a linear interpolation of $f$ that matches the function exactly at the points 
