@@ -11,7 +11,7 @@ I've been recently studying the material in Prof. Florian Marquadt's excellent [
 This particular problem [(1.1)](https://pad.gwdg.de/s/FUUwJ6c21#Problem-1-Expressivity-of-shallow-Neural-Networks) asks for proving that any continuous function in either $\mathbb{R}$ or $\mathbb{R}^2$ can be approximated by a neural net. This is actually a subcase of the well known fact that neural nets can approximate arbitrarily well any continuous function $f: \mathbb{R}^m \rightarrow \mathbb{R}^n$ inside a bounded domain. [This property](https://link.springer.com/article/10.1007/BF02551274) was proven by G. Cybenko in the late 1980s, showing that even a very shallow architecture consisting of a network with a single hidden layer can do the job.
 
 ## One-dimensional case
-To get the main idea behind the proof, let's first focus on 1D mappings, i.e., $y = f(x)$ with $x, y \in \mathbb{R}$. To simplify things further, let's restrict $x$ to the unit interval, $x \in [0,1]$. It is very easy to generalize this restrictions to more complex cases once you understand the overall strategy.
+To get the main idea behind the proof, let's first focus on 1D mappings, i.e., $y = f(x)$ with $x, y \in \mathbb{R}$. To simplify things further, let's restrict $x$ to lie inside the unit interval, $x \in [0,1]$. It is very easy to generalize this restrictions to more complex cases once you understand the overall strategy.
 
 We will focus on using a ReLU nonlinearity, although other nonlinear activation functions such as $\tanh$ or sigmoid works just as well with minimal modifications. Our shallow network would look like the following
 
