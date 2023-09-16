@@ -22,13 +22,13 @@ The basic idea in constructing an approximation to $f$ is to partition the unit 
 But how do we approximate $f$ on each interval $I_j$? Luckily, that requires only 3 hidden neurons when using the ReLU activation function. The idea is that each of the 3 neurons belonging to $H_j$ output a ReLU activation that, when summed together, produce a sharp spike at the center of $I_j$ with height equal to 1. We then scale this spike to match the function we want to approximate, i.e., multiply by $f(\frac{j+1/2}{n})$. Finally, we superimpose all spikes together, effectively producing a linear interpolation of $f$ that matches the function exactly at the points 
 $\frac{j+1/2}{n}$ for $j=0,...,n-1$.
 
-For each set $H_j$, the activations of the three neurons on it are:
+For each set $H_j$, the activations of the three neurons on it are given by
 
-$$a_j^-(x) = ReLU\left(x-\frac{j-1/2}{n}\right)$$
+Neuron 1: $$a_j^-(x) = ReLU\left(x-\frac{j-1/2}{n}\right)$$
 
-$$a_j(x) = ReLU\left(x-\frac{j+1/2}{n}\right)$$
+Neuron 2: $$a_j(x) = ReLU\left(x-\frac{j+1/2}{n}\right)$$
 
-$$a_j^+(x) = ReLU\left(x-\frac{j+3/2}{n}\right)$$
+Neuron 3: $$a_j^+(x) = ReLU\left(x-\frac{j+3/2}{n}\right)$$
 
 The terms inside parentheses can be obtained by applying biases in the connections between the input layer and the hidden layer. In the connection to the output layer, these three activations are scaled and summed as
 
