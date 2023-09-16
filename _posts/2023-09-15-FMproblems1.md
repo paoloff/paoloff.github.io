@@ -26,7 +26,7 @@ For each set $H_j$, the activations of the three neurons on it are:
 
 $$a_j^-(x) = ReLU\left(x-\frac{j-1/2}{n}\right)$$
 
-$$a_j^0(x) = ReLU\left(x-\frac{j+1/2}{n}\right)$$
+$$a_j(x) = ReLU\left(x-\frac{j+1/2}{n}\right)$$
 
 $$a_j^+(x) = ReLU\left(x-\frac{j+3/2}{n}\right)$$
 
