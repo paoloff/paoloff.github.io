@@ -40,7 +40,7 @@ The  activation of the neuron in the output layer can then be written as
 
 $$F(x) = \sum_{j=1}^n F_j(x)$$
 
-Now, to see why $F$ is a linear interpolation of $f$, notice that for $x=\frac{j+1/2}{n}$, $F(x)$ matches exactly with $f(x)$ since the only contributing peak with a nonzero contribution is the term $F_j(x)$. For any $x$ between two consecutive peak centers, e.g., $x \in [\frac{j+1/2}{n},\frac{j+3/2}{n}]$, the only non-zero contributions are $F_j(x)$ and $F_{j+1}(x)$. But since both $F_j$ and $F_{j+1}$ are linear and monotone in this interval, their sum must be a line connecting the peak centers.
+Now, to see why $F$ is a linear interpolation of $f$, notice that for $x=\frac{j+1/2}{n}$, $F(x)$ matches exactly with $f(x)$ since the only contributing peak with a nonzero contribution is the term $F_j(x)$. For any $x$ between two consecutive peak centers, e.g., $x \in [\frac{j+1/2}{n},\frac{j+3/2}{n}]$, the only non-zero contributions are $F_j(x)$ and $F_{j+1}(x)$. But since both $F_j$ and $F_{j+1}$ are linear and monotone in this interval, their sum must be a line connecting the peak apexes.
 
 
 
