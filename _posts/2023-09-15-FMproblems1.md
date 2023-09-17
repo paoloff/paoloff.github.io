@@ -65,7 +65,7 @@ So, the graph of $s$ has the shape of an infinite strip along the $x_2$ axis wit
 
 To go from a vertical strip to a spike centered at $[0,0]$, we superimpose many "rotated" strips together. By rotation we mean we apply an usual rotation $\theta$ to the vector $\bold{w}=[w,0]$ as $\bold{w_{\theta}}=[w\cos\theta,w\sin\theta]$. Now, the superposition given by
 
-$$ s(\bold{x}) = \sigma(\bold{w}\cdot\bold{x}+b) + \sigma(-\bold{w}\cdot\bold{x}+b) - 1 $$
+$$ s(\boldsymbol{x}) = \sigma(\bold{w}\cdot\bold{x}+b) + \sigma(-\bold{w}\cdot\bold{x}+b) - 1 $$
 
 By definition of inner product, this gives approximately
 
