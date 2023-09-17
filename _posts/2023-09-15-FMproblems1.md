@@ -47,43 +47,43 @@ Now, to see why $F$ is a linear interpolation of $f$, notice that for $x=\frac{j
 A very similar construction works for proving that a shallow net can approximate any continuous function on the two-dimensional plane, i.e., $f: 
  \mathcal{C} \rightarrow \mathbb{R}$ with $\mathcal{C} \subset \mathbb{R}^2$. We will now use sigmoid activation functions $\sigma(a) = 1/[1+\exp(-a)]$ inside our network (although ReLU or $\tanh$ would work as well).
 
-The idea is the same as before. We discretize region $\mathcal{C}$ into small subregions and partition the neurons in the hidden layer so that each set of neurons is used to approximate $f$ inside its respective subregion, outputting a null contribution for $\textbf{x}$ far from it. To approximate $f$ inside each subregion, we use a superposition of sigmoid activations to produce a sharp peak centered inside the subregion.
+The idea is the same as before. We discretize region $\mathcal{C}$ into a fine grid of points and partition the neurons in the hidden layer so that each set of neurons is used to approximate $f$ inside each point in the grid, outputting a null contribution for $\mathbf{x}$ far from it. To approximate $f$ inside each grid point, we use a superposition of sigmoid activations to produce a sharp peak centered on the grid point.
 
-For simplicity, let's assume  $\mathcal{C} = [0,1]\times[0,1]$. Now, let's show how to produce a sharp peak centered at $[0,0]$. Let choose $\textbf{w} = [w, 0]$ as the weights of the 2 connections between the input vector $\textbf{x}=[x_1,x_2]$ and a neuron in the hidden layer.
+For simplicity, let's assume  $\mathcal{C} = [0,1]\times[0,1]$. Now, let's show how to produce a sharp peak centered at $[0,0]$. Let choose $\mathbf{w} = [w, 0]$ as the weights of the 2 connections between the input vector $\mathbf{x}=[x_1,x_2]$ and a neuron in the hidden layer.
 
 We first produce a function which is $0$ everywhere except on strip along the $x_2$-axis with a adjustable width. Such function can be written as the following superposition of sigmoids
 
-$$ s(\textbf{x}) = \sigma(\textbf{w}\cdot\textbf{x}+b) + \sigma(-\textbf{w}\cdot\textbf{x}+b) - 1 = \sigma(wx_1+ b)+\sigma(-wx_1+b) - 1$$ 
+$$ s(\mathbf{x}) = \sigma(\mathbf{w}\cdot\mathbf{x}+b) + \sigma(-\mathbf{w}\cdot\mathbf{x}+b) - 1 = \sigma(wx_1+ b)+\sigma(-wx_1+b) - 1$$ 
 
 Supposing $w$ is large enough and $b>0$, the two sigmoids will produce step-like functions. It can be clearly seen that their sum $s$ is given by
 
 * $s(x_1) \approx 0$ for $x_1<-b/w$
-* $s(x_1)\approx 1$ for $-b/w<x_1<b/w$
-* $s(x_1)\approx 0$ for $b/w<x_1$
+* $s(x_1) \approx 1$ for $-b/w< x_1< b/w$
+* $s(x_1) \approx 0$ for $b/w< x_1$
 
 So, the graph of $s$ has the shape of an infinite strip along the $x_2$ axis with width $2b/w$ and height $1$ provided the weights $w$ are large enough. 
 
-To go from a vertical strip to a spike centered at $[0,0]$, we superimpose many "rotated" strips together. By rotation we mean we apply an usual rotation $\theta$ to the vector $\textbf{w}=[w,0]$ as $\textbf{w_{\theta}}=[w\cos\theta, w\sin\theta]$. Now, the superposition given by
+To go from a vertical strip to a spike centered at $[0,0]$, we superimpose many "rotated" strips together. By rotation we mean we apply an usual rotation $\theta$ to the vector $\mathbf{w}=[w,0]$ as $\mathbf{w_{\theta}}=[w\cos\theta, w\sin\theta]$. Now, the superposition given by
 
-$$ s(\\textbf{x}) = \sigma(\textbf{w}\cdot\textbf{x}+b) + \sigma(-\textbf{w}\cdot\textbf{x}+b) - 1 $$
+$$ s(\mathbf{x}) = \sigma(\mathbf{w}\cdot\mathbf{x}+b) + \sigma(-\mathbf{w}\cdot\mathbf{x}+b) - 1 $$
 
 By definition of inner product, this gives approximately
 
-* $s_\theta(\textbf{x}) \approx 0$ for $x_1\cos\theta + x_2\sin\theta  <-b/w$
-* $s_\theta(\textbf{x})\approx 1$ for $-b/w<x_1\cos\theta  + x_2\sin\theta <b$
-* $s_\theta(\textbf{x})\approx 0$ for $b/w<x_1\cos\theta + x_2\sin\theta $
+* $s_\theta(\mathbf{x}) \approx 0$ for $x_1\cos\theta + x_2\sin\theta<-b/w$
+* $s_\theta(\mathbf{x})\approx 1$ for $-b/w< x_1\cos\theta  + x_2\sin\theta< b$
+* $s_\theta(\mathbf{x})\approx 0$ for $b/w< x_1\cos\theta + x_2\sin\theta$
 
-Since $x_1\cos\theta + x_2\sin\theta$ is the projection of $\textbf{x}$ in the unit vector $[\cos\theta,\sin\theta]$, $s(\textbf{x})$ is only non-zero for  $\textbf{x}$ lying inside an infinite strip of width $b/w$ rotated from the $x_2$ axis by $\theta$.
+Since $x_1\cos\theta + x_2\sin\theta$ is the projection of $\mathbf{x}$ in the unit vector $[\cos\theta,\sin\theta]$, $s(\mathbf{x})$ is only non-zero for  $\mathbf{x}$ lying inside an infinite strip of width $b/w$ rotated from the $x_2$ axis by $\theta$.
 
 Finally, we superimpose ${N_\theta}$ rotated strips $s_{\theta_n}$ to produce a peak $P$ around $[0,0]$ with radius $r\approx b/w$:
 
-$$ P(\textbf{x}) = \frac{1}{N_\theta}\sum_{n=1}^{N_\theta} s_{\theta_n}(\textbf{x})$$
+$$ P(\mathbf{x}) = \frac{1}{N_\theta}\sum_{n=1}^{N_\theta} s_{\theta_n}(\mathbf{x})$$
 
-Now that we have a peak with unit height, we can scale and shift it accordinly to match the value of the function $f$ anywhere inside $\mathcal{C}$. Suppose we discretive $\mathcal{C}$ into a grid on $N$ by $N$ points $\textbf{x_{ij}}$ with $i,j = 0,1,..,N$. Then, the output of the neural net is
+Now that we have a peak with unit height, we can scale and shift it accordinly to match the value of the function $f$ anywhere inside $\mathcal{C}$. Suppose we discretive $\mathcal{C}$ into a grid on $N$ by $N$ points $\mathbf{x_{ij}}$ with $i,j = 0,1,..,N$. Then, the output of the neural net is
 
-$$ F(\textbf{x}) = \sum_{i,j} g_{ij}P(\textbf{x}-\textbf{x_{ij}})$$
+$$ F(\mathbf{x}) = \sum_{i,j} g_{ij}P(\mathbf{x}-\mathbf{x_{ij}})$$
 
-The coefficients $g_{ij}$ need to abjusted to match the values of the function $f(\textbf{x_{ij}})$. If the overlap between peaks is sufficiently small i.e., $b/w$ is much less than the spacing between grid points, then $g_{ij} \approx f(\textbf{x_{ij}})$.
+The coefficients $g_{ij}$ need to abjusted to match the values of the function $f(\mathbf{x_{ij}})$. If the overlap between peaks is sufficiently small i.e., $b/w$ is much less than the spacing between grid points, then $g_{ij} \approx f(\mathbf{x_{ij}})$.
 
 
 
