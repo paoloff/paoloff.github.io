@@ -85,6 +85,8 @@ $$ F(\mathbf{x}) = \sum_{i,j} g_{ij}P(\mathbf{x}-\mathbf{x}_{ij})$$
 
 The coefficients $g_{ij}$ need to abjusted to match the values of the function $f$ on the gridpoints such that $F(\mathbf{x_{ij}}) \approx f(\mathbf{x_{ij}} )$. If the overlap between peaks is sufficiently small i.e., $b/w$ is much less than the spacing between grid points, then $g_{ij} \approx f(\mathbf{x_{ij}})$.
 
+## Wiener's Tauberian theorem
+
 
 
 
