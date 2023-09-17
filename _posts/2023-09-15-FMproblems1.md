@@ -79,11 +79,11 @@ Finally, we superimpose ${N_\theta}$ rotated strips $s_{\theta_n}$ to produce a 
 
 $$ P(\mathbf{x}) = \frac{1}{N_\theta}\sum_{n=1}^{N_\theta} s_{\theta_n}(\mathbf{x})$$
 
-Now that we have a peak with unit height, we can scale and shift it accordinly to match the value of the function $f$ anywhere inside $\mathcal{C}$. Suppose we discretive $\mathcal{C}$ into a grid on $N$ by $N$ points $\mathbf{x_{ij}}$ with $i,j = 0,1,..,N$. Then, the output of the neural net is
+Now that we have a peak with unit height, we can scale and shift it accordinly to match the value of the function $f$ anywhere inside $\mathcal{C}$. Suppose our grid consists of $N^2$ points $\mathbf{x}_{ij}$ with $i,j = 0,1,..,N$. Then, the output of the neural net can be written as
 
-$$ F(\mathbf{x}) = \sum_{i,j} g_{ij}P(\mathbf{x}-\mathbf{x_{ij}})$$
+$$ F(\mathbf{x}) = \sum_{i,j} g_{ij}P(\mathbf{x}-\mathbf{x}_{ij})$$
 
-The coefficients $g_{ij}$ need to abjusted to match the values of the function $f(\mathbf{x_{ij}})$. If the overlap between peaks is sufficiently small i.e., $b/w$ is much less than the spacing between grid points, then $g_{ij} \approx f(\mathbf{x_{ij}})$.
+The coefficients $g_{ij}$ need to abjusted to match the values of the function $f$ on the gridpoints such that $F(\mathbf{x_{ij}}) \approx f(\mathbf{x_{ij}} )$. If the overlap between peaks is sufficiently small i.e., $b/w$ is much less than the spacing between grid points, then $g_{ij} \approx f(\mathbf{x_{ij}})$.
 
 
 
