@@ -91,19 +91,19 @@ The above discussion leaves open the question of how to effectively compute the 
 
 $$ F(\mathbf{x}) = \sum_{i,j} g_{ij}P(\mathbf{x}-\mathbf{x}_{ij}).$$
 
-The reason for that is because this equation is actually a finite sum approximation of the integral equation
+The reason for that is because this equation is actually a discrete approximation of the integral equation
 
 $$ f(\mathbf{x}) = \int g(\mathbf{x'})P(\mathbf{x}-\mathbf{x'})d\mathbf{x'}$$
 
-In this formulation, our problem is to determine a function $g$ that when convoluted with $P$ (the kernel) produces exactly $f$. However, in practive, producing such exact approximation of $f$ would require a network with an infinite number of neurons! Instead, the idea is to use Fourier theory to compute the weights $g(\mathbf{x'})$ and then resort back to a finite sum approximation of the integral. Luckily, the Fourier transform of a convolution is the product of the transforms. Thus, in Fourier space, our equation is
+In this form, our problem is to determine a function $g$ that when convoluted with $P$ (the kernel) produces exactly $f$. However, in practive, producing such exact approximation of $f$ would require a network with an infinite number of neurons! Instead, the idea is to use Fourier theory to compute the weights $g(\mathbf{x'})$ and then resort back to a finite sum approximation of the integral. Luckily, the Fourier transform of a convolution is the product of the transforms. Thus, in Fourier space, our equation is
 
 $$ \tilde{f}(\mathbf{q}) = \tilde{g}(\mathbf{q})\tilde{P}(\mathbf{q})$$
 
 Thus, the coefficients are given by $\tilde{g}(\mathbf{q}) =  \tilde{f}(\mathbf{q})/\tilde{P}(\mathbf{q})$ in Fourier space. In real space, the coefficients are given by the inverse Fourier transform:
 
-$$ g(\mathbf{x}) = \frac{1}{2\pi}\int\frac{\tilde{f}(\mathbf{q})}{\tilde{P}(\mathbf{q})}e^{-i\mathbf{q}\cdot\mathbf{x}}d\mathbf{q}$$
+$$ g(\mathbf{x}) =\int\frac{\tilde{f}(\mathbf{q})}{\tilde{P}(\mathbf{q})}e^{2\pi i\mathbf{q}\cdot\mathbf{x}}d\mathbf{q}$$
 
-Here, we assumed that  $\tilde{P}(\mathbf{q})$ has no zeros in Fourier space. If there are zeros, we have to assume that the singularities of the function $\tilde{f}(\mathbf{q})/\tilde{P}(\mathbf{q})$ are integrable so that the above integral is finite. We could then use techniques such as [Cauchy's principal value's method](https://en.wikipedia.org/wiki/Cauchy_principal_value) to evaluate the integral.
+Here, we assumed that  $\tilde{P}(\mathbf{q})$ has no zeros in Fourier space. If there are zeros, we have to assume that the singularities of the function $\tilde{f}(\mathbf{q})/\tilde{P}(\mathbf{q})$ are integrable so that the above integral is finite. We could then use techniques such as [Cauchy's principal value](https://en.wikipedia.org/wiki/Cauchy_principal_value) to evaluate the integral.
 
 Having an explicit form for the function $g(\mathbf{x})$, our final expression for the approximation of $f$ by the neural net is
 
