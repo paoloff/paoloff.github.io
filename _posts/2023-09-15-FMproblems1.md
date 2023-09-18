@@ -85,7 +85,30 @@ $$ F(\mathbf{x}) = \sum_{i,j} g_{ij}P(\mathbf{x}-\mathbf{x}_{ij})$$
 
 The coefficients $g_{ij}$ need to abjusted to match the values of the function $f$ on the gridpoints such that $F(\mathbf{x_{ij}}) \approx f(\mathbf{x_{ij}} )$. If the overlap between peaks is sufficiently small i.e., $b/w$ is much less than the spacing between grid points, then $g_{ij} \approx f(\mathbf{x_{ij}})$.
 
-## Wiener's Tauberian theorem
+## Formulation in Fourier space
+
+The above discussion leaves open the question of how to effectively compute the weights $g_{ij}$ on the general case. To obtain that, we will employ a Fourier decomposition of the equation 
+
+$$ F(\mathbf{x}) = \sum_{i,j} g_{ij}P(\mathbf{x}-\mathbf{x}_{ij}).$$
+
+The reason for that is because this equation is actually a finite sum approximation of the integral equation
+
+$$ f(\mathbf{x}) = \int g(\mathbf{x'})P(\mathbf{x}-\mathbf{x'})d\mathbf{x'}$$
+
+In this formulation, our problem is to determine a function $g$ that when convoluted with $P$ (the kernel) produces exactly $f$. However, in practive, producing such exact approximation of $f$ would require a network with an infinite number of neurons! Instead, the idea is to use Fourier theory to compute the weights $g(\mathbf{x'})$ and then resort back to a finite sum approximation of the integral. Luckily, the Fourier transform of a convolution is the product of the transforms. Thus, in Fourier space, our equation is
+
+$$ \tilde{f}(\mathbf{q}) = \tilde{g}(\mathbf{q})\tilde{P}(\mathbf{q})$$
+
+Thus, the coefficients are given by $\tilde{g}(\mathbf{q}) =  \tilde{f}(\mathbf{q})/\tilde{P}(\mathbf{q})$ in Fourier space. In real space, the coefficients are given by the inverse Fourier transform:
+
+$$ g(\mathbf{x}) = \frac{1}{2\pi}\int\frac{\tilde{f}(\mathbf{q})}{\tilde{P}(\mathbf{q})}e^{-i\mathbf{q}\cdot\mathbf{x}}d\mathbf{q}$$
+
+Here, we assumed that  $\tilde{P}(\mathbf{q})$ has no zeros in Fourier space. If there are zeros, we have to assume that the poles of the function $\tilde{f}(\mathbf{q})/\tilde{P}(\mathbf{q})$ are integrable so that the above integral is finite. 
+
+Having an explicit form for the function $g(\mathbf{x})$, our final expression for the approximation of $f$ by the neural net is
+
+$$ F(\mathbf{x}) = \sum_{i,j} g(\mathbf{x_{ij}})P(\mathbf{x}-\mathbf{x}_{ij}).$$
+
 
 
 
