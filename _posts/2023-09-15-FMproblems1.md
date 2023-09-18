@@ -103,7 +103,7 @@ Thus, the coefficients are given by $\tilde{g}(\mathbf{q}) =  \tilde{f}(\mathbf{
 
 $$ g(\mathbf{x}) = \frac{1}{2\pi}\int\frac{\tilde{f}(\mathbf{q})}{\tilde{P}(\mathbf{q})}e^{-i\mathbf{q}\cdot\mathbf{x}}d\mathbf{q}$$
 
-Here, we assumed that  $\tilde{P}(\mathbf{q})$ has no zeros in Fourier space. If there are zeros, we have to assume that the singularities of the function $\tilde{f}(\mathbf{q})/\tilde{P}(\mathbf{q})$ are integrable so that the above integral is finite. We could then use [Cauchy's principal value's method](https://en.wikipedia.org/wiki/Cauchy_principal_value) or other numerical techniques to evaluate the integral.
+Here, we assumed that  $\tilde{P}(\mathbf{q})$ has no zeros in Fourier space. If there are zeros, we have to assume that the singularities of the function $\tilde{f}(\mathbf{q})/\tilde{P}(\mathbf{q})$ are integrable so that the above integral is finite. We could then use techniques such as [Cauchy's principal value's method](https://en.wikipedia.org/wiki/Cauchy_principal_value) to evaluate the integral.
 
 Having an explicit form for the function $g(\mathbf{x})$, our final expression for the approximation of $f$ by the neural net is
 
