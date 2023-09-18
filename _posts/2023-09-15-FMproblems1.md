@@ -95,7 +95,9 @@ The reason for that is because this equation is actually a discrete approximatio
 
 $$ f(\mathbf{x}) = \int g(\mathbf{x'})P(\mathbf{x}-\mathbf{x'})d\mathbf{x'}$$
 
-In this form, our problem is to determine a function $g$ that when convoluted with $P$ (the kernel) produces exactly $f$. However, in practive, producing such exact approximation of $f$ would require a network with an infinite number of neurons! Instead, the idea is to use Fourier theory to compute the weights $g(\mathbf{x'})$ and then resort back to a finite sum approximation of the integral. Luckily, the Fourier transform of a convolution is the product of the transforms. Thus, in Fourier space, our equation is
+In this form, our problem is to determine a function $g$ that when convoluted with $P$ (the kernel) produces exactly $f$. However, in practive, producing such exact approximation of $f$ would require a network with an infinite number of neurons! Instead, the idea is to use Fourier theory to compute the weights $g(\mathbf{x'})$ and then resort back to a sum with finitely many terms as our approximation. 
+
+Luckily, the Fourier transform of a convolution is the product of the transforms. Thus, in Fourier space, our equation is
 
 $$ \tilde{f}(\mathbf{q}) = \tilde{g}(\mathbf{q})\tilde{P}(\mathbf{q})$$
 
