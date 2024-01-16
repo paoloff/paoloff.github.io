@@ -5,7 +5,6 @@ categories: [general]
 math: true
 ---
 
-## Introduction
 I've been recently studying the material in Prof. Florian Marquadt's excellent [Advanced Machine Learning lecture series](https://pad.gwdg.de/s/2021_AdvancedMachineLearningForScience). The lectures are specially worth your time if your background is in Physics. Now, since I am the kind of person that can only fixate something after working on it myself, I've been solving most of his take-home problems. I will be posting my solutions to problems that I find most insightful. 
 
 This particular problem [(1.1)](https://pad.gwdg.de/s/FUUwJ6c21#Problem-1-Expressivity-of-shallow-Neural-Networks) asks for proving that any continuous function in either $\mathbb{R}$ or $\mathbb{R}^2$ can be approximated by a neural net. This is actually a subcase of the well known fact that neural nets can approximate arbitrarily well any continuous function $f: \mathbb{R}^m \rightarrow \mathbb{R}^n$ inside a bounded domain. [This property](https://link.springer.com/article/10.1007/BF02551274) was proven by G. Cybenko in the late 1980s, showing that even a very shallow architecture consisting of a network with a single hidden layer can do the job.
