@@ -20,7 +20,7 @@ timezone: America/Sao_Paulo
 
 title: Paolo F. Ferrari # the main title
 
-tagline: Machine Learning Science & Engineering # it will display as the sub-title
+tagline: On the Science and Engineering of Machine Learning # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   Welcome, dear stranger. In this website, I write about my interests regarding software, AI, physics and their connections. Hope you enjoy it!
